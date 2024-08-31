@@ -10,8 +10,8 @@ model_choice = st.radio(
 )
 
 # Convert the choice to a boolean for easier handling
-use_claude = model_choice == "Claude"
-
+use_claude = model_choice == "Paid model"
+st.write(f"Using {model_choice}.")
 if use_claude:
     utils_claude.main()
 else:

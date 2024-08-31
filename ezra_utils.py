@@ -58,7 +58,7 @@ def q_and_a_app(api_key):
         st.session_state.messages = []
 
     # Get a list of all .md files in the 'docs' folder
-    md_files = [f for f in os.listdir(docs_path) if f.endswith(".md")]
+    md_files = [f for f in os.listdir(docs_path) if (f.endswith(".md") or f.endswith(".txt"))]
 
     # Display checkboxes for each .md file
 
@@ -95,9 +95,10 @@ def q_and_a_app(api_key):
             # Get bot response
             with st.chat_message("assistant"):
                 message_placeholder = st.empty()
-                response = client_ai21.chat.completions.create(messages=st.session_state.messages,
-                                                            model="jamba-1.5-large",
-                                                            stream=False)
+                with st.spinner("תמתין רגע בבקשה, אני בודק את המידע"):
+                    response = client_ai21.chat.completions.create(messages=st.session_state.messages,
+                                                                model="jamba-1.5-large",
+                                                                stream=False)
                 st.session_state.messages.append(ChatMessage(role="assistant",
                                                              content=response.choices[0].message.content))
                 st.session_state.messages.remove(new_message)

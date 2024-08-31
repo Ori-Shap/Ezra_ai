@@ -7,6 +7,7 @@ from ai21.models.chat import ChatMessage
 import streamlit as st
 
 AI21_KEY = "0AgGyLuj3v4ei7XbIPGZ17HLPzRRSwt5"
+LOGO_PATH = "png-transparent-construction-robot-illustration-fotor-bg-remover-2024083110409.png"
 
 
 def generate_context(selected_files: list[str], docs_path: str) -> list[str]:
@@ -22,7 +23,16 @@ def generate_context(selected_files: list[str], docs_path: str) -> list[str]:
     return context
 
 
+def set_title():
+    if os.path.exists(LOGO_PATH):
+        st.image(LOGO_PATH, width=150)
+
+    st.title("Ezra")
+    st.markdown("### Here to help")
+
+
 def main():
+    set_title()
     api_key = st.text_input("Insert API Key", type="password")
     if not api_key:
         st.info("Please add your API key to continue.", icon="🗝️")
@@ -36,7 +46,7 @@ def q_and_a_app(api_key):
     client_ai21 = ai21.AI21Client(api_key=api_key)
 
     # Show title and description.
-    st.title("עזרא")
+    # Check if the file exists before attempting to load it
     docs_path = "docs"
 
     # Initialize session state to store selected files if it doesn't exist

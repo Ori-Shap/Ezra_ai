@@ -106,13 +106,3 @@ def q_and_a_app(api_key):
                 st.session_state.messages_history.append({"role": "assistant", "content": response.choices[0].message.content})
                 message_placeholder.markdown(response.choices[0].message.content)
                 print(st.session_state.messages)
-
-        # # Generate an answer using the OpenAI API.
-        # stream = vlient.chat.completions.create(
-        #     model="gpt-40",
-        #     messages=messages,
-        #     stream=True,
-        # )
-
-        # Stream the response to the app using `st.write_stream`.
-        # st.write_stream(stream)

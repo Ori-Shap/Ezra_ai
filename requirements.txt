@@ -2,7 +2,7 @@
 # openai
 # ai21>=2.13.0
 # anthropic
-streamlit==1.8.0  # An older version; Dependabot will suggest an update.
+streamlit==1.37.0  # An older version; Dependabot will suggest an update.
 openai==0.22.0    # An outdated version; Dependabot will likely suggest updating.
 ai21>=2.13.0      # Already versioned, so Dependabot will monitor this.
 anthropic==0.1.0  # A hypothetical old version; Dependabot will update if newer is available.
